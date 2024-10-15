@@ -6,13 +6,7 @@ FROM ghcr.io/thumbsup/build:node-18 as build
 
 # Install thumbsup locally
 WORKDIR /thumbsup
-ARG PACKAGE_VERSION
-RUN if [ -z "${PACKAGE_VERSION}" ]; then \
-      echo "Please specify --build-arg PACKAGE_VERSION=<2.4.1>"; \
-      exit 1; \
-    fi;
-RUN echo '{"name": "installer", "version": "1.0.0"}' > package.json
-RUN npm install thumbsup@${PACKAGE_VERSION}
+RUN npm install https://github.com/feederbox826/thumbsup.git
 
 # ------------------------------------------------
 # Runtime image
