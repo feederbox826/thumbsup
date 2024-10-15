@@ -18,7 +18,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - id: version
         name: Fetch latest NPM version
         run: echo ::set-output name=version::$(npm show thumbsup version)
@@ -30,6 +30,6 @@ jobs:
           build-args: PACKAGE_VERSION=${{ steps.version.outputs.version }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           tags: |
-            ghcr.io/thumbsup/thumbsup:${{ steps.version.outputs.version }}
-            ghcr.io/thumbsup/thumbsup:latest
+            ghcr.io/${{ github.repository_owner }}/thumbsup:${{ steps.version.outputs.version }}
+            ghcr.io/${{ github.repository_owner }}/thumbsup:latest
           push: true

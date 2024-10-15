@@ -2,7 +2,7 @@ const path = require('node:path')
 const urljoin = require('url-join')
 const url = require('./url')
 
-const BROWSER_SUPPORTED_EXT = /(jpg|jpeg|png|gif)$/i
+const BROWSER_SUPPORTED_EXT = /(jpg|jpeg|png|gif|webp)$/i
 
 exports.folders = function (filepath, rel, options = {}) {
   const dir = path.dirname(filepath)

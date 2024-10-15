@@ -74,7 +74,7 @@ describe('Output paths', function () {
     })
 
     it('keeps the original image format if the browser supports it', function () {
-      ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF'].forEach(ext => {
+      ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF', 'webp', 'WEBP'].forEach(ext => {
         const o = output.paths(`holidays/beach.${ext}`, 'image', {})
         should(o.thumbnail.path).eql(ospath(`media/thumbs/holidays/beach.${ext}`))
       })
@@ -82,7 +82,7 @@ describe('Output paths', function () {
 
     it('converts images to JPEG if not supported', function () {
       // some of these formats are supported on certain browser, but we aim for maximum compatibility
-      ['bmp', 'tiff', 'webp'].forEach(ext => {
+      ['bmp', 'tiff'].forEach(ext => {
         const o = output.paths(`holidays/beach.${ext}`, 'image', {})
         should(o.thumbnail.path).eql(ospath('media/thumbs/holidays/beach.jpg'))
       })
